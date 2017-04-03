@@ -12,7 +12,7 @@ console.log(setChallenge);
 var win = false;
 var wins = 0;
 var losses = 0;
-var userGuess = null;
+var userGuess = "";
 var guessesLeft = 10;
 var guessesSoFar = userGuess;
 
@@ -20,6 +20,7 @@ var guessesSoFar = userGuess;
 document.onkeyup = function()
 {
   userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
   if (guessesLeft < 2) 
   {
     win = false;
@@ -36,14 +37,7 @@ document.onkeyup = function()
   {
     guessesLeft = guessesLeft - 1;
   }
-
-  for (var i =0; i < guesesLeft; i++)
-  {
-    
-  }
 }
-
-
 
 // holds all text we want displayed once user starts pressing keys
 var html = "<h1>The Psychic Game</h1>" +
