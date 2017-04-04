@@ -17,47 +17,48 @@ var losses = 0;
 var guessesLeft = 10;
 var guessesSoFar = [];
 
+for (var i = 0; i < guessesLeft; i++)
+{
+  document.onkeyup = function()
+  { 
+    var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+    var setNewChallenge;
 
-document.onkeyup = function()
-{ 
-  var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-
-  if (guessesLeft == 0) 
-  {
+    if (guessesLeft == 0) 
+    {
     win = false;
     losses++;
     alert("you lose");
     guessesLeft = 10
     guessesSoFar = [];
-  }
+    }
 
-  else if (setChallenge == userGuess) 
-  {
+    else if (setChallenge == userGuess) 
+    {
     win = true;
     wins++;
     alert("you win");
     guessesLeft = 10
     guessesSoFar = [];
-  }
+    }
 
-  else
-  {
+    else
+    {
     guessesLeft = guessesLeft - 1;
     guessesSoFar.push(userGuess);
     guessesSoFar.join(",");
+    }
+
+    var html = "<h1>The Psychic Game</h1>" +
+    "<p>wins: " + wins + "</p>" + 
+    "<p>losses: " + losses + "</p>" +
+    "<p>Guesses left: " + guessesLeft + "</p>" +
+    "<p>Your guesses so far: " + guessesSoFar + "</p>";
+
+
+    document.querySelector("#game").innerHTML = html;
   }
-
-  var html = "<h1>The Psychic Game</h1>" +
-  "<p>wins: " + wins + "</p>" + 
-  "<p>losses: " + losses + "</p>" +
-  "<p>Guesses left: " + guessesLeft + "</p>" +
-  "<p>Your guesses so far: " + guessesSoFar + "</p>";
-
-
-  document.querySelector("#game").innerHTML = html;
 }
-
-// holds all text we want displayed once user starts pressing keys
 
 
 
