@@ -18,9 +18,7 @@ function resetGame()
 {
     guessesLeft = 10;
     guessesSoFar = [];
-    var setNewChallenge = setChallenge;
 }
-
 
 document.onkeyup = function()
 { 
