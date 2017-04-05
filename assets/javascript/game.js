@@ -18,7 +18,11 @@ function resetGame()
 {
     guessesLeft = 10;
     guessesSoFar = [];
+    findLetter = Math.floor(Math.random()*letters.length);
+    setChallenge = letters[findLetter];
+    console.log(setChallenge);
 }
+
 
 document.onkeyup = function()
 { 
@@ -29,8 +33,6 @@ document.onkeyup = function()
         win = false;
         losses++;
         alert("you lose");
-        guessesLeft = 10
-        guessesSoFar = [];
         resetGame();
     }
 
@@ -39,8 +41,6 @@ document.onkeyup = function()
         win = true;
         wins++;
         alert("you win");
-        guessesLeft = 10
-        guessesSoFar = [];
         resetGame();
     }
 
