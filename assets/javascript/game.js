@@ -1,14 +1,11 @@
 // array of letters.
 var letters = ["a","b","c","d","e","f","g","h","i","j","h","i","j",
                 "k","l","m","n","o","p","q","r","s","t","u","v", "w", "y", "z"];
-
-// finds and sets one letter from the array and sets the new challenge.
-
 var findLetter = Math.floor(Math.random()*letters.length);
 var setChallenge = letters[findLetter];
 
-
 console.log(setChallenge);
+
 
 // set of initial variables.
 var win = false;
@@ -17,36 +14,43 @@ var losses = 0;
 var guessesLeft = 10;
 var guessesSoFar = [];
 
-for (var i = 0; i < guessesLeft; i++)
+function resetGame()
 {
-  document.onkeyup = function()
-  { 
+    guessesLeft = 10;
+    guessesSoFar = [];
+    var setNewChallenge = setChallenge;
+}
+
+
+document.onkeyup = function()
+{ 
     var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-    var setNewChallenge;
 
     if (guessesLeft == 0) 
     {
-    win = false;
-    losses++;
-    alert("you lose");
-    guessesLeft = 10
-    guessesSoFar = [];
+        win = false;
+        losses++;
+        alert("you lose");
+        guessesLeft = 10
+        guessesSoFar = [];
+        resetGame();
     }
 
     else if (setChallenge == userGuess) 
     {
-    win = true;
-    wins++;
-    alert("you win");
-    guessesLeft = 10
-    guessesSoFar = [];
+        win = true;
+        wins++;
+        alert("you win");
+        guessesLeft = 10
+        guessesSoFar = [];
+        resetGame();
     }
 
     else
     {
-    guessesLeft = guessesLeft - 1;
-    guessesSoFar.push(userGuess);
-    guessesSoFar.join(",");
+        guessesLeft = guessesLeft - 1;
+        guessesSoFar.push(userGuess);
+        guessesSoFar.join(",");
     }
 
     var html = "<h1>The Psychic Game</h1>" +
@@ -57,8 +61,8 @@ for (var i = 0; i < guessesLeft; i++)
 
 
     document.querySelector("#game").innerHTML = html;
-  }
 }
+
 
 
 
